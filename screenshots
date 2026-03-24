@@ -1,0 +1,267 @@
+Started by user anni
+ > /usr/bin/git rev-parse --resolve-git-dir /var/jenkins_home/caches/git-6575b7e7e4a4fd2a822fee23069d5157/.git # timeout=10
+Setting origin to git@gitlab.com:coffeezon3/cd-jenkins-docker-compose-ec2.git
+ > /usr/bin/git config remote.origin.url git@gitlab.com:coffeezon3/cd-jenkins-docker-compose-ec2.git # timeout=10
+Fetching origin...
+Fetching upstream changes from origin
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > /usr/bin/git config --get remote.origin.url # timeout=10
+using GIT_SSH to set credentials 
+Verifying host key using known hosts file
+ > /usr/bin/git fetch --no-tags --force --progress -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/jenkins-jobs
+Seen branch in repository origin/main
+Seen 2 remote branches
+Obtained Jenkinsfile from ff42769a2c31940c44894383f04895388a34de71
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/ultibranch-pipeline_jenkins-jobs
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential gitlab-ssh
+ > /usr/bin/git rev-parse --resolve-git-dir /var/jenkins_home/workspace/ultibranch-pipeline_jenkins-jobs/.git # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url git@gitlab.com:coffeezon3/cd-jenkins-docker-compose-ec2.git # timeout=10
+Fetching without tags
+Fetching upstream changes from git@gitlab.com:coffeezon3/cd-jenkins-docker-compose-ec2.git
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_SSH to set credentials 
+Verifying host key using known hosts file
+ > /usr/bin/git fetch --no-tags --force --progress -- git@gitlab.com:coffeezon3/cd-jenkins-docker-compose-ec2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision ff42769a2c31940c44894383f04895388a34de71 (jenkins-jobs)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f ff42769a2c31940c44894383f04895388a34de71 # timeout=10
+Commit message: "Jenkinsfile bearbeiten"
+ > /usr/bin/git rev-list --no-walk eb8c361725ec571254ec586e2907d5f8096834b9 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build App)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Building application jar...
+[Pipeline] sh
++ mvn clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.example:java-maven-app >---------------------
+[INFO] Building java-maven-app 1.1.8
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ java-maven-app ---
+[INFO] Deleting /var/jenkins_home/workspace/ultibranch-pipeline_jenkins-jobs/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ java-maven-app ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/ultibranch-pipeline_jenkins-jobs/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:compile (default-compile) @ java-maven-app ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /var/jenkins_home/workspace/ultibranch-pipeline_jenkins-jobs/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ java-maven-app ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/ultibranch-pipeline_jenkins-jobs/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.6.0:testCompile (default-testCompile) @ java-maven-app ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /var/jenkins_home/workspace/ultibranch-pipeline_jenkins-jobs/target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ java-maven-app ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running AppTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s -- in AppTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ java-maven-app ---
+[INFO] Building jar: /var/jenkins_home/workspace/ultibranch-pipeline_jenkins-jobs/target/java-maven-app-1.1.8.jar
+[INFO] 
+[INFO] --- spring-boot:2.3.5.RELEASE:repackage (default) @ java-maven-app ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.672 s
+[INFO] Finished at: 2026-03-03T21:29:58Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Building Docker image...
+[Pipeline] sh
++ docker build -t asdhka/react-nodejs-example:latest .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  17.46MB
+
+Step 1/5 : FROM amazoncorretto:8-alpine3.17-jre
+ ---> e675b465b04e
+Step 2/5 : EXPOSE 8080
+ ---> Using cache
+ ---> 8d833110f75d
+Step 3/5 : COPY ./target/java-maven-app-*.jar /usr/app/
+ ---> 2fc38fe342a4
+Step 4/5 : WORKDIR /usr/app
+ ---> Running in fac342fb94b9
+ ---> Removed intermediate container fac342fb94b9
+ ---> 0c0f0c0b5a67
+Step 5/5 : CMD java -jar java-maven-app-*.jar
+ ---> Running in 2c7d9d7a2797
+ ---> Removed intermediate container 2c7d9d7a2797
+ ---> 9dc5e1190bfb
+Successfully built 9dc5e1190bfb
+Successfully tagged asdhka/react-nodejs-example:latest
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_PASS
+[Pipeline] {
+[Pipeline] sh
++ echo ****
++ docker login -u asdhka --password-stdin
+Login Succeeded
++ docker push asdhka/react-nodejs-example:latest
+The push refers to repository [docker.io/asdhka/react-nodejs-example]
+3a40385cde3d: Preparing
+432a00a9effe: Preparing
+8d78b2117a5b: Preparing
+8d78b2117a5b: Layer already exists
+432a00a9effe: Layer already exists
+3a40385cde3d: Pushed
+latest: digest: sha256:9da3eb5495cf98ab161915b3d607367f922732056d74e46e270d9b0128c5a48b size: 952
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to EC2)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Deploying to EC2 using Docker Compose...
+[Pipeline] sshagent
+[ssh-agent] Using credentials ec2-user
+$ ssh-agent
+SSH_AUTH_SOCK=/tmp/ssh-ml0lEzjH9NJa/agent.1533
+SSH_AGENT_PID=1536
+Running ssh-add (command line suppressed)
+Identity added: /var/jenkins_home/workspace/ultibranch-pipeline_jenkins-jobs@tmp/private_key_18175649361747248617.key (/var/jenkins_home/workspace/ultibranch-pipeline_jenkins-jobs@tmp/private_key_18175649361747248617.key)
+[ssh-agent] Started.
+[Pipeline] {
+[Pipeline] sh
++ scp -o StrictHostKeyChecking=no docker-compose.yaml ec2-user@3.67.174.62:~/docker-compose.yaml
+[Pipeline] sh
++ ssh -o StrictHostKeyChecking=no ec2-user@3.67.174.62 
+                            docker-compose down || true &&
+                            docker-compose pull &&
+                            docker-compose up -d
+                        
+time="2026-03-03T21:30:10Z" level=warning msg="/home/ec2-user/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container ec2-user-java-maven-app-1 Stopping 
+ Container ec2-user-postgres-1 Stopping 
+ Container ec2-user-postgres-1 Stopped 
+ Container ec2-user-postgres-1 Removing 
+ Container ec2-user-postgres-1 Removed 
+ Container ec2-user-java-maven-app-1 Stopped 
+ Container ec2-user-java-maven-app-1 Removing 
+ Container ec2-user-java-maven-app-1 Removed 
+ Network ec2-user_default Removing 
+ Network ec2-user_default Removed 
+time="2026-03-03T21:30:11Z" level=warning msg="/home/ec2-user/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Image asdhka/react-nodejs-example:latest Pulling 
+ Image postgres:15 Pulling 
+ Image postgres:15 Pulled 
+ fbcfea79c1c4 Already exists 
+ 1d80e9709262 Already exists 
+ f87643c7646f Pulling fs layer 
+ f87643c7646f Downloading [>                                                  ]    157kB/15.38MB
+ f87643c7646f Downloading [===========>                                       ]  3.686MB/15.38MB
+ f87643c7646f Downloading [===========================================>       ]  13.34MB/15.38MB
+ f87643c7646f Verifying Checksum 
+ f87643c7646f Download complete 
+ f87643c7646f Extracting [>                                                  ]  163.8kB/15.38MB
+ f87643c7646f Extracting [=======================>                           ]  7.209MB/15.38MB
+ f87643c7646f Extracting [=============================================>     ]  14.09MB/15.38MB
+ f87643c7646f Extracting [==================================================>]  15.38MB/15.38MB
+ f87643c7646f Pull complete 
+ Image asdhka/react-nodejs-example:latest Pulled 
+time="2026-03-03T21:30:13Z" level=warning msg="/home/ec2-user/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Network ec2-user_default Creating 
+ Network ec2-user_default Created 
+ Container ec2-user-postgres-1 Creating 
+ Container ec2-user-java-maven-app-1 Creating 
+ Container ec2-user-java-maven-app-1 Created 
+ Container ec2-user-postgres-1 Created 
+ Container ec2-user-postgres-1 Starting 
+ Container ec2-user-java-maven-app-1 Starting 
+ Container ec2-user-java-maven-app-1 Started 
+ Container ec2-user-postgres-1 Started 
+[Pipeline] }
+$ ssh-agent -k
+unset SSH_AUTH_SOCK;
+unset SSH_AGENT_PID;
+echo Agent pid 1536 killed;
+[ssh-agent] Stopped.
+[Pipeline] // sshagent
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
