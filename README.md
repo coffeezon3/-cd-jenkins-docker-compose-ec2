@@ -10,3 +10,5 @@ Projekt description:
 - configure jenkins pipeline to deploy newly built image using Docker compose on EC2 server
 - Improvement: extract multiple linux commands that are executed on remote server into a separate shell script and execute the script from Jenkinsfile
   
+see:
+https://gitlab.com/coffeezon3/cd-jenkins-docker-compose-ec2.git
